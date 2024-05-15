@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const productPrice = parseFloat(formData.get('price')); 
         const img = formData.get('image');
 
-        fetch('http://localhost:3001/products', {
+        fetch('https://json-api-delta.vercel.app/products', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,15 +23,17 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             console.log('Producto agregado:', data);
+            location.reload();
         })
         .catch(error => {
             console.error('Error:', error);
+            location.reload();
         });
     });
 
     const productList = document.querySelector('.productList');
 
-    fetch('http://localhost:3001/products')
+    fetch('https://json-api-delta.vercel.app/products')
         .then(response => response.json())
         .then(data => {
             data.forEach(product => {
@@ -58,16 +60,18 @@ document.addEventListener('DOMContentLoaded', function() {
     productList.addEventListener('click', function(event) {
         if (event.target.closest('.delete_item')) {
             const productId = event.target.closest('.delete_item').getAttribute('data-id');
-            fetch(`http://localhost:3001/products/${productId}`, {
+            fetch(`https://json-api-delta.vercel.app/products/${productId}`, {
                 method: 'DELETE'
             })
             .then(response => response.json())
             .then(data => {
                 console.log('Producto eliminado:', data);
                 event.target.parentElement.remove();
+                location.reload();
             })
             .catch(error => {
                 console.error('Error al eliminar el producto:', error);
+                location.reload();
             });
         }
     });
