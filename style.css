@@ -240,7 +240,7 @@ footer img {
 }
 
 
-@media only screen and (min-width: 320px) and (max-width: 980px) {
+@media only screen and (min-width: 200px) and (max-width: 980px) {
     header {
         width: 100%;
         height: 100px;
@@ -296,5 +296,7 @@ footer img {
     footer p{
         font-size: 15px;
     }
-    
+    .buttons button{
+        width: 150px;
+    }
 }
